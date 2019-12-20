@@ -55,6 +55,7 @@ typedef struct		s_info_data
 	int				len_arg;
 	int				arg_int;
 	int				sign;
+	int				check;
 	char			*arg_str;
 
 }					t_info_data;

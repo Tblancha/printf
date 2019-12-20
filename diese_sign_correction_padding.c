@@ -20,31 +20,23 @@ char
 }
 
 void
-	handler_signe_or_flag_plus(t_buff *buff,t_info_data *data)
+	handler_signe_or_flag_plus(t_buff *buff, t_info_data *data)
 {
-	static int	check = 0;
-
-	if (((data->flag & PLUS) && (data->flag & ZERO) && check == 0)
-	|| ((data->flag & PLUS) && check == 1 && !(data->flag & ZERO)))
+	if (data->flag & ZERO && data->check == 0)
 	{
 		if (data->sign == 1)
 			ft_putchar_buff(buff, '-');
-		else
+		else if (data->flag & PLUS)
 			ft_putchar_buff(buff, '+');
-		check += 9;
 	}
-	else if ((data->type == 8 || data->type == 6) && check == 1)
+	else if ((!(data->flag & ZERO)) && data->check == 1)
 	{
 		if (data->sign == 1)
 			ft_putchar_buff(buff, '-');
+		else if (data->flag & PLUS)
+			ft_putchar_buff(buff, '+');
 	}
-	else if (check == 0 && (data->flag & ZERO))
-		if (data->sign == 1)
-		{
-			ft_putchar_buff(buff, '-');
-			++check;
-		}
-	++check;
+	data->check = 1;
 }
 
 void
