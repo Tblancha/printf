@@ -8,6 +8,30 @@ static void
 	ft_bzero(buff->buffer, BUFF_SIZE_2);
 }
 
+static void
+	init_struct_data(t_info_data *data)
+{
+	data->flag = 0;
+	data->type = 0;
+	data->padding = 0;
+	data->precision = 0;
+	data->conversion = 0;
+	data->len_arg = 0;
+	data->arg_int = 0;
+	data->sign = 0;
+	data->check = 0;
+}
+
+static void
+	print_type_percent(t_buff *buff, t_info_data *data)
+{
+	if (data->padding > 1 && !(data->flag & MINUS))
+		ft_repeat_char_buff(buff, ' ', (data->padding - 1));
+	ft_putchar_buff(buff, '%');
+	if (data->padding > 1 && (data->flag & MINUS))
+		ft_repeat_char_buff(buff, ' ', (data->padding - 1));
+}
+
 int
 	ft_printf(const char *format, ...)
 {
@@ -34,13 +58,14 @@ int
 		else
 		{
 			str++;
+			init_struct_data(&data);
 			parse_percent(&data, &str);
 			if (data.flag & ETOILE)
 				data.padding = (int)va_arg(arg, int);
-			if (data.type == TYPE_NONE || data.type == TYPE_PERCENT)
-			{
-				ft_putstr("PAS ENCORE FAIT\n");
-			}
+			if (data.type == TYPE_NONE)
+				ft_putchar_buff(&buff, data.last_char);	
+			else if (data.type == TYPE_PERCENT)
+				print_type_percent(&buff, &data);
 			else
 				dispatch_type(data.type)(arg, &buff, &data);
 		}

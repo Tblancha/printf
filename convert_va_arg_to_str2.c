@@ -6,7 +6,7 @@
 /*   By: tblancha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 05:13:54 by tblancha          #+#    #+#             */
-/*   Updated: 2019/12/04 04:53:58 by tblancha         ###   ########.fr       */
+/*   Updated: 2019/12/26 17:39:26 by tblancha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void
 	va_arg_type_c(va_list arg, t_info_data *data)
 {
 	data->arg_int = (int)va_arg(arg, int);
-
 }
 
 void

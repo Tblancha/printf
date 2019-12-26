@@ -6,7 +6,7 @@
 /*   By: tblancha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 21:29:13 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/12/04 04:59:36 by tblancha         ###   ########.fr       */
+/*   Updated: 2019/12/26 17:28:15 by tblancha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static const t_type		g_get_type[256] = {
 	['i'] = TYPE_D,
 	['o'] = TYPE_O,
 	['u'] = TYPE_U,
+	['U'] = TYPE_U,
 	['x'] = TYPE_X_MIN,
 	['X'] = TYPE_X_MAJ,
 	['f'] = TYPE_F,
@@ -109,6 +110,10 @@ static void
 	data->precision = 0;
 	data->conversion = 0;
 	data->len_arg = 0;
+	data->arg_int = 0;
+	data->sign = 0;
+	data->check = 0;
+	data->last_char = 0;
 }
 
 void
@@ -119,5 +124,6 @@ void
 		return ;
 	parse_flag(data, str);
 	data->type = g_get_type[(int)(**str)];
+	data->last_char = (**str);
 	(*str)++;
 }

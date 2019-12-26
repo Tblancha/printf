@@ -22,6 +22,53 @@ int main()
 int a;
 int b;
 
+a = ft_printf("|%15.4d|", 42);
+printf("\n");
+b = printf("|%15.4d|", 42);
+printf("\nme   = %d\nreal = %d\n", a, b);
+
+a = ft_printf("|%15.4d|", -42);
+printf("\n");
+b = printf("|%15.4d|", -42);
+printf("\nme   = %d\nreal = %d\n\n", a, b);
+
+a = ft_printf("|%03.2d|", 1);
+printf("\n");
+b = printf("|%03.2d|", 1);
+printf("\nme   = %d\nreal = %d\n", a, b);
+
+a = ft_printf("|%03.2d|", -1);
+printf("\n");
+b = printf("|%03.2d|", -1);
+printf("\nme   = %d\nreal = %d\n\n", a, b);
+
+a = ft_printf("%c", 0);
+printf("\n");
+b = printf("%c", 0);
+printf("\nme   = %d\nreal = %d\n", a, b);
+
+a = ft_printf("|%3c|", a);
+printf("\n");
+b = printf("|%3c|", a);
+printf("\nme   = %d\nreal = %d\n", a, b);
+
+a = ft_printf("|%3c|", 0);
+printf("\n");
+b = printf("|%3c|", 0);
+printf("\nme   = %d\nreal = %d\n", a, b);
+
+a = ft_printf("|%.c|", a);
+printf("\n");
+b = printf("|%.c|", a);
+printf("\nme   = %d\nreal = %d\n", a, b);
+
+a = ft_printf("|%.c|", 0);
+printf("\n");
+b = printf("|%.c|", 0);
+printf("\nme   = %d\nreal = %d\n\n\n", a, b);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 a = ft_printf("|%d|", -42);
 printf("\n");
 b = printf("|%d|", -42);
@@ -47,11 +94,21 @@ printf("\n");
 b = printf("|%+10d|", -42);
 printf("\nme   = %d\nreal = %d\n", a, b);
 
+a = ft_printf("|%+10d|", 42);
+printf("\n");
+b = printf("|%+10d|", 42);
+printf("\nme   = %d\nreal = %d\n", a, b);
+
 a = ft_printf("|%0+10d|", -42);
 printf("\n");
 b = printf("|%0+10d|", -42);
 printf("\nme   = %d\nreal = %d\n", a, b);
-/*
+
+a = ft_printf("|%0+10d|", 42);
+printf("\n");
+b = printf("|%0+10d|", 42);
+printf("\nme   = %d\nreal = %d\n", a, b);
+
 a = ft_printf("%f", 12.50);
 printf("\n");
 b = printf("%f", 12.50);
@@ -292,6 +349,8 @@ printf("\n");
 	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[% 10.0d]\n", 0);
 	rl = printf("\033[0;31mREAL>\t\033[0m[% 10.0d]\n", 0);
 	printf ("[%d] [%d]\n", me, rl);
+
+
 	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%4.5d]\n", 42);
 	rl = printf("\033[0;31mREAL>\t\033[0m[%4.5d]\n", 42);
 	printf ("[%d] [%d]\n", me, rl);
@@ -304,6 +363,17 @@ printf("\n");
 	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%5.4d]\n", 42LL);
 	rl = printf("\033[0;31mREAL>\t\033[0m[%5.4d]\n", 42LL);
 	printf ("[%d] [%d]\n", me, rl);
+
+
+	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%d]\n", -42U);
+	rl = printf("\033[0;31mREAL>\t\033[0m[%d]\n", -42U);
+	printf ("[%d] [%d]\n", me, rl);
+	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%4.5d]\n", 42);
+	rl = printf("\033[0;31mREAL>\t\033[0m[%4.5d]\n", 42);
+	printf ("[%d] [%d]\n", me, rl);
+	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%4.5d]\n", -42);
+	rl = printf("\033[0;31mREAL>\t\033[0m[%4.5d]\n", -42);
+	printf ("[%d] [%d]\n", me, rl);
 	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%4.5d]\n", -42U);
 	rl = printf("\033[0;31mREAL>\t\033[0m[%4.5d]\n", -42U);
 	printf ("[%d] [%d]\n", me, rl);
@@ -313,6 +383,8 @@ printf("\n");
 	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%5.4d]\n", 42U);
 	rl = printf("\033[0;31mREAL>\t\033[0m[%5.4d]\n", 42U);
 	printf ("[%d] [%d]\n", me, rl);
+
+
 	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%54d]\n", 42LL);
 	rl = printf("\033[0;31mREAL>\t\033[0m[%54d]\n", 42LL);
 	printf ("[%d] [%d]\n", me, rl);
@@ -468,7 +540,7 @@ printf("\n");
 	rl = printf("\033[0;31mREAL>\t\033[0m[%#s %0s]\n", "ABC", "ABC");
 	printf ("[%d] [%d]\n", me, rl);
 	//
-	printf("\n\n\nYOOOOOOOOOOOOOO");
+	printf("\n\n\nYOOOOOOOOOOOOOO\n");
 	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%+s %0-s]\n", "ABC", "ABC");
 	rl = printf("\033[0;31mREAL>\t\033[0m[%+s %0-s]\n", "ABC", "ABC");
 	printf ("[%d] [%d]\n", me, rl);
@@ -571,7 +643,7 @@ printf("%s\n", "JE SUIS ICI ////////////////////////////////////////////////");
 	rl = printf("\033[0;31mREAL>\t\033[0m[%-6ca]\n", 0);
 	printf ("[%d] [%d]\n", me, rl);
 	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%-.2ca]\n", 0);
-	rl = printf("\033[0;31mREAL>\t\033[0m[%-.2ca]\n", 0);
+	rl =    printf("\033[0;31mREAL>\t\033[0m[%-.2ca]\n", 0);
 	printf ("[%d] [%d]\n", me, rl);
 	me = ft_printf("\n\033[0;33mYOUR>\t\033[0m[%-6.2ca]\n", 400);
 	rl = printf("\033[0;31mREAL>\t\033[0m[%-6.2ca]\n", 400);
@@ -579,7 +651,9 @@ printf("%s\n", "JE SUIS ICI ////////////////////////////////////////////////");
 	me = ft_printf("\n1\033[0;33mYOUR>\t\033[0m[%-6ca]\n", -42);
 	rl = printf("02\033[0;31mREAL>\t\033[0m[%-6ca]\n", -42);
 	printf ("[%d] [%d]\n", me, rl);
-*/
+	me = ft_printf("\n1\033[0;33mYOUR>\t\033[0m[%ca]yyyyyyyyyyyyyyyyy\n", 0);
+	rl = printf("02\033[0;31mREAL>\t\033[0m[%ca]\n", 0);
+	printf ("[%d] [%d]\n", me, rl);
 
 	/////////////
 /*	me = ft_printf("\nYO\033[0;33mYOUR>\t\033[0m[%-.2ca]\n", NULL);

@@ -16,6 +16,8 @@ char
 			}
 		}
 	}
+	if (data->sign == 1)
+		data->padding--;
 	return (data->arg_str);
 }
 

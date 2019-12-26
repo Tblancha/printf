@@ -32,7 +32,6 @@ void
 void
 	apply_flag_router_other(t_buff *buff, t_info_data *data)
 {
-	data->check = 0;
 	data->arg_str = correction_precision_padding_flag_zero(data);
 	if (data->flag & SPACE)
 		if (data->sign == 0)

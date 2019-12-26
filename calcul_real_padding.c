@@ -34,7 +34,7 @@ int	real_value_of_padding_pdiuxxmaj(t_info_data *data)
 		data->len_arg--;
 	}
 	if (data->precision > data->len_arg)
-		real_padding -= data->precision;
+		real_padding -= data->precision - data->sign;
 	else
 		real_padding -= data->len_arg;
 	if (real_padding < 0)

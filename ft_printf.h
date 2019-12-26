@@ -13,7 +13,7 @@
  ** ____ DEFINE
 */
 
-# define BUFF_SIZE_2	4096
+# define BUFF_SIZE_2	128
 # define ABS(Value)		(Value < 0 ? -Value : Value)
 
 /*
@@ -56,6 +56,7 @@ typedef struct		s_info_data
 	int				arg_int;
 	int				sign;
 	int				check;
+	int				last_char;
 	char			*arg_str;
 
 }					t_info_data;
