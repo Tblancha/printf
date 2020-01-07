@@ -6,7 +6,7 @@
 /*   By: tblancha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 05:13:54 by tblancha          #+#    #+#             */
-/*   Updated: 2019/12/26 17:39:26 by tblancha         ###   ########.fr       */
+/*   Updated: 2020/01/07 23:08:23 by tblancha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void
 		number = (int)va_arg(arg, int);
 	if (number < 0)
 		data->sign = 1;
-	data->arg_str = convert_to_base_uintmax_t(ABS(number), "0123456789");
+	data->arg_str = convert_to_base_uintmax_t(ft_abs(number), "0123456789");
 }

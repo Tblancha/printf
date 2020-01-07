@@ -14,6 +14,7 @@ SRC =		convert_to_base.c \
 			dispatch_type2.c \
 			ignore_flag.c \
 			ignore_flag2.c \
+			ft_abs.c
 
 OBJ =		$(SRC:.c=.o)
 

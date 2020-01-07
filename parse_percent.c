@@ -6,7 +6,7 @@
 /*   By: tblancha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 21:29:13 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/12/26 17:28:15 by tblancha         ###   ########.fr       */
+/*   Updated: 2020/01/07 22:25:51 by tblancha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static const t_type		g_get_type[256] = {
 	['%'] = TYPE_PERCENT,
 };
 
-static const int	g_get_flag[256] = {
+static const int		g_get_flag[256] = {
 	['#'] = DIESE,
 	['+'] = PLUS,
 	[' '] = SPACE,
@@ -43,7 +43,8 @@ static const int	g_get_flag[256] = {
 	['q'] = CONV_LL,
 };
 
-static int		flag_is_number(char **str)
+static int
+	flag_is_number(char **str)
 {
 	int		number;
 
@@ -90,7 +91,7 @@ static void
 		}
 		(*str)++;
 		if (flag == CONV_H || flag == CONV_L_MIN || flag == CONV_L_MAJ
-		|| flag == CONV_J || flag == CONV_Z || flag == CONV_LL)
+				|| flag == CONV_J || flag == CONV_Z || flag == CONV_LL)
 			fill_conversion(data, str, flag);
 		else
 		{

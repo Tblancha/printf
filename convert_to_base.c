@@ -6,7 +6,7 @@
 /*   By: tblancha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 21:26:53 by brjorgen          #+#    #+#             */
-/*   Updated: 2019/12/26 17:28:10 by tblancha         ###   ########.fr       */
+/*   Updated: 2020/01/07 23:08:15 by tblancha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ char
 	signe = (number < 0) ? 1 : 0;
 	while (number != 0)
 	{
-		*--converted_num = base[ABS(number % len_base)];
+		*--converted_num = base[ft_abs(number % len_base)];
 		number = number / len_base;
-		
 	}
 	if (signe)
 		*--converted_num = '-';

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   apply_flag_router.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tblancha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/26 19:29:02 by tblancha          #+#    #+#             */
+/*   Updated: 2019/12/26 19:29:27 by tblancha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void
 	apply_flag_router_c(t_buff *buff, t_info_data *data)
 {
 	if (data->flag & SPACE)
-			ft_putchar_buff(buff, ' ');
+		ft_putchar_buff(buff, ' ');
 	if (data->flag & ZERO)
 		ft_repeat_char_buff(buff, '0', data->padding);
 	else if (!(data->flag & MINUS))

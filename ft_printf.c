@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tblancha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/07 21:55:12 by tblancha          #+#    #+#             */
+/*   Updated: 2020/01/07 22:21:16 by tblancha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static void
@@ -32,6 +44,33 @@ static void
 		ft_repeat_char_buff(buff, ' ', (data->padding - 1));
 }
 
+static void
+	ft_reductor(va_list *arg, char *str, t_buff *buff, t_info_data *data)
+{
+	while (*str)
+	{
+		if (*str != '%')
+		{
+			ft_putchar_buff(buff, *str);
+			str++;
+		}
+		else
+		{
+			str++;
+			init_struct_data(data);
+			parse_percent(data, &str);
+			if (data->flag & ETOILE)
+				data->padding = (int)va_arg(*arg, int);
+			if (data->type == TYPE_NONE)
+				ft_putchar_buff(buff, data->last_char);
+			else if (data->type == TYPE_PERCENT)
+				print_type_percent(buff, data);
+			else
+				pf_dispatch_type(data->type)(*arg, buff, data);
+		}
+	}
+}
+
 int
 	ft_printf(const char *format, ...)
 {
@@ -48,28 +87,7 @@ int
 	str = (char *)format;
 	va_start(arg, format);
 	init_struct_buff(&buff);
-	while (*str)
-	{
-		if (*str != '%')
-		{
-			ft_putchar_buff(&buff, *str);
-			str++;
-		}
-		else
-		{
-			str++;
-			init_struct_data(&data);
-			parse_percent(&data, &str);
-			if (data.flag & ETOILE)
-				data.padding = (int)va_arg(arg, int);
-			if (data.type == TYPE_NONE)
-				ft_putchar_buff(&buff, data.last_char);	
-			else if (data.type == TYPE_PERCENT)
-				print_type_percent(&buff, &data);
-			else
-				dispatch_type(data.type)(arg, &buff, &data);
-		}
-	}
+	ft_reductor(&arg, str, &buff, &data);
 	flush_buff(&buff);
 	return (buff.len);
 }
